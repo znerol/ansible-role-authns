@@ -1,0 +1,13 @@
+; {{ ansible_managed }}
+
+$TTL {{ authns_zone_db_ttl }}
+@   IN SOA  {{ authns_zone_db_ns }}. {{ authns_zone_db_hostmaster }}. (
+        {{ authns_zone_db_serial }}
+        {{ authns_zone_db_refresh }}
+        {{ authns_zone_db_retry }}
+        {{ authns_zone_db_expire }}
+        {{ authns_zone_db_minimum }}
+    )
+@   IN NS      {{ authns_zone_db_ns }}.
+
+$INCLUDE {{ authns_zone_rr_file }};

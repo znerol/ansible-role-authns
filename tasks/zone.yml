@@ -1,0 +1,30 @@
+---
+- name: Zone configuration file present
+  template:
+    src: zone.j2
+    dest: "{{ authns_zone_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Zone database file present
+  template:
+    src: db.j2
+    dest: "{{ authns_zone_db_file }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Zone resource records file present
+  copy:
+    content: ""
+    force: no
+    dest: "{{ authns_zone_rr_file }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Zone configuration file included
+  lineinfile:
+    path: "{{ authns_bind_config_file }}"
+    line: 'include "{{ authns_zone_config_file }}";'

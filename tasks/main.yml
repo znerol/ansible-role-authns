@@ -1,0 +1,11 @@
+---
+- name: Bind nameserver installed
+  loop: "{{ authns_packages }}"
+  apt:
+    name: "{{ item }}"
+    state: present
+
+- name: Bind configured as authoritative-only nameserver
+  template:
+    src: named.conf.options.j2
+    dest: "{{ authns_bind_options_file }}"

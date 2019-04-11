@@ -1,0 +1,14 @@
+---
+- name: Update key file
+  copy:
+    content: ""
+    force: no
+    dest: "{{ authns_update_key_file }}"
+    owner: "{{ authns_update_key_owner }}"
+    group: "{{ authns_update_key_group }}"
+    mode: 0640
+
+- name: Update key file included
+  lineinfile:
+    path: "{{ authns_bind_config_file }}"
+    line: 'include "{{ authns_update_key_file }}";'

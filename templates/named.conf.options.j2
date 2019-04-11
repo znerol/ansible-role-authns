@@ -1,0 +1,12 @@
+// {{ ansible_managed }}
+
+options {
+	directory "{{ authns_bind_cache_path }}";
+
+	auth-nxdomain no;    # conform to RFC1035
+	listen-on-v6 { any; };
+
+        recursion no;
+        allow-transfer { none; };
+};
+
