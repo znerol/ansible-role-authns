@@ -13,6 +13,6 @@ authns_zone_db_retry: 900
 authns_zone_db_expire: 604800
 authns_zone_db_minimum: 1200
 
-authns_zone_db_ns_in_zone: "{{ authns_zone_db_ns == authns_zone_name or authns_zone_db_ns.endswith('.{:s}'.format(authns_zone_name)) | boolean }}"
-authns_zone_db_ns_ip4: "{{ ansible_default_ipv4.address }}"
-authns_zone_db_ns_ip6: "{{ ansible_default_ipv6.address }}"
+authns_zone_db_ns_in_zone: "{{ authns_zone_db_ns == authns_zone_name or authns_zone_db_ns.endswith('.{:s}'.format(authns_zone_name)) | bool }}"
+authns_zone_db_ns_ip4: "{{ ansible_default_ipv4['address'] | default('') }}"
+authns_zone_db_ns_ip6: "{{ ansible_default_ipv6['address'] | default('') }}"
