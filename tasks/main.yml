@@ -9,6 +9,8 @@
     state: present
 
 - name: Bind main config file present
+  notify:
+    - Bind reloaded
   template:
     src: named.conf.j2
     dest: "{{ authns_bind_main_file }}"
@@ -17,6 +19,8 @@
     mode: 0644
 
 - name: Bind zones config file present
+  notify:
+    - Bind reloaded
   copy:
     content: ""
     dest: "{{ authns_bind_config_file }}"
@@ -26,6 +30,8 @@
     mode: 0644
 
 - name: Bind configured as authoritative-only nameserver
+  notify:
+    - Bind reloaded
   template:
     src: named.conf.options.j2
     dest: "{{ authns_bind_options_file }}"

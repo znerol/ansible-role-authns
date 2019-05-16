@@ -1,5 +1,7 @@
 ---
 - name: Zone configuration file present
+  notify:
+    - Bind reloaded
   template:
     src: zone.j2
     dest: "{{ authns_zone_config_file }}"
@@ -8,6 +10,8 @@
     mode: 0644
 
 - name: Zone database file present
+  notify:
+    - Bind reloaded
   template:
     src: db.j2
     dest: "{{ authns_zone_db_file }}"
@@ -16,6 +20,8 @@
     mode: 0644
 
 - name: Zone resource records file present
+  notify:
+    - Bind reloaded
   copy:
     content: ""
     force: no
@@ -25,6 +31,8 @@
     mode: 0644
 
 - name: Zone configuration file included
+  notify:
+    - Bind reloaded
   lineinfile:
     path: "{{ authns_bind_config_file }}"
     line: 'include "{{ authns_zone_config_file }}";'
