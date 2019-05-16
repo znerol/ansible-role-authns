@@ -9,7 +9,7 @@ lint:
   name: yamllint
 
 platforms:
-  - name: centos-authns
+  - name: ns1.centos-authns.example.com
     image: znerolmolecule/molecule-prebuilt:centos-systemd
     tty: yes
     capabilities:
@@ -21,7 +21,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-  - name: debian-authns
+  - name: ns2.debian-authns.example.net
     image: znerolmolecule/molecule-prebuilt:debian-systemd
     tty: yes
     capabilities:
@@ -33,7 +33,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-  - name: fedora-authns
+  - name: ns3.fedora-authns.example.com
     image: znerolmolecule/molecule-prebuilt:fedora-systemd
     tty: yes
     capabilities:
@@ -45,7 +45,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
-  - name: ubuntu-authns
+  - name: ns4.ubuntu-authns.example.net
     image: znerolmolecule/molecule-prebuilt:ubuntu-systemd
     tty: yes
     capabilities:

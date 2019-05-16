@@ -1,5 +1,14 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-role-authns
+  tasks:
+    - import_role:
+        name: ansible-role-authns
+
+    - import_role:
+        name: ansible-role-authns
+        tasks_from: zone
+
+    - import_role:
+        name: ansible-role-authns
+        tasks_from: utilities
