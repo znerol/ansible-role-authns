@@ -29,3 +29,9 @@
   template:
     src: named.conf.options.j2
     dest: "{{ authns_bind_options_file }}"
+
+- name: Bind enabled and service started
+  service:
+    name: "{{ authns_service }}"
+    enabled: yes
+    state: started

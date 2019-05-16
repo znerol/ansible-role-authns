@@ -1,5 +1,6 @@
 ---
 authns_packages: [ "bind" ]
+authns_service: "bind"
 
 authns_bind_etc_path: "/etc/bind"
 authns_bind_db_path: "/var/bind/pri"

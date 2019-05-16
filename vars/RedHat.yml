@@ -1,5 +1,6 @@
 ---
 authns_packages: [ "bind" ]
+authns_service: "named"
 
 authns_bind_etc_path: "/etc/named"
 
