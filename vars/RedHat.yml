@@ -1,0 +1,11 @@
+---
+authns_packages: [ "bind" ]
+
+authns_bind_etc_path: "/etc/named"
+
+authns_bind_run_path: "/var/named"
+
+authns_bind_main_file: "/etc/named.conf"
+
+authns_update_key_owner: root
+authns_update_key_group: named

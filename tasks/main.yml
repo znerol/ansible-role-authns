@@ -1,9 +1,29 @@
 ---
+- name: OS-specific variables included.
+  include_vars: "{{ ansible_os_family }}.yml"
+
 - name: Bind nameserver installed
   loop: "{{ authns_packages }}"
   package:
     name: "{{ item }}"
     state: present
+
+- name: Bind main config file present
+  template:
+    src: named.conf.j2
+    dest: "{{ authns_bind_main_file }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Bind zones config file present
+  copy:
+    content: ""
+    dest: "{{ authns_bind_config_file }}"
+    force: no
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Bind configured as authoritative-only nameserver
   template:
