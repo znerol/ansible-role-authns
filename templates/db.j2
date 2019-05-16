@@ -10,4 +10,13 @@ $TTL {{ authns_zone_db_ttl }}
     )
 @   IN NS      {{ authns_zone_db_ns }}.
 
+{% if authns_zone_db_ns_in_zone: %}
+{% if authns_zone_db_ns_ip4: %}
+{{ authns_zone_db_ns }}.    IN A {{ authns_zone_db_ns_ip4 }}
+{% end %}
+{% if authns_zone_db_ns_ip6: %}
+{{ authns_zone_db_ns }}.    IN AAAA {{ authns_zone_db_ns_ip6 }}
+{% endif %}
+{% endif %}
+
 $INCLUDE {{ authns_zone_rr_file }};
