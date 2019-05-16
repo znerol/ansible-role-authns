@@ -1,3 +1,4 @@
+---
 - name: Bind reloaded
   service:
     name: "{{ authns_service }}"
