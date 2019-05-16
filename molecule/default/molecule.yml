@@ -1,25 +1,67 @@
 ---
 dependency:
   name: galaxy
+
 driver:
   name: docker
+
 lint:
   name: yamllint
+
 platforms:
-  - name: alpine-authns
-    image: znerolmolecule/molecule-prebuilt:alpine
   - name: centos-authns
-    image: znerolmolecule/molecule-prebuilt:centos
+    image: znerolmolecule/molecule-prebuilt:centos-systemd
+    tty: yes
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
   - name: debian-authns
-    image: znerolmolecule/molecule-prebuilt:debian
+    image: znerolmolecule/molecule-prebuilt:debian-systemd
+    tty: yes
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
   - name: fedora-authns
-    image: znerolmolecule/molecule-prebuilt:fedora
+    image: znerolmolecule/molecule-prebuilt:fedora-systemd
+    tty: yes
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
   - name: ubuntu-authns
-    image: znerolmolecule/molecule-prebuilt:ubuntu
+    image: znerolmolecule/molecule-prebuilt:ubuntu-systemd
+    tty: yes
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
+
 verifier:
   name: testinfra
   lint:
