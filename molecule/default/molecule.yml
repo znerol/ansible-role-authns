@@ -6,8 +6,16 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
-    image: centos:7
+  - name: alpine-authns
+    image: znerolmolecule/molecule-prebuilt:alpine
+  - name: centos-authns
+    image: znerolmolecule/molecule-prebuilt:centos
+  - name: debian-authns
+    image: znerolmolecule/molecule-prebuilt:debian
+  - name: fedora-authns
+    image: znerolmolecule/molecule-prebuilt:fedora
+  - name: ubuntu-authns
+    image: znerolmolecule/molecule-prebuilt:ubuntu
 provisioner:
   name: ansible
   lint:
