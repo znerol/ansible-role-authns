@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  role_name: authns
+  author: Lorenz Schori
+  description: BIND Authoritative Name Server
+
+  # Some suggested licenses:
+  license: BSD
+
+  min_ansible_version: 2.5
+
+  platforms:
+    - name: Debian
+      versions:
+        - "stretch"
+        - "buster"
+    - name: EL
+      versions:
+        - "7"
+    - name: Ubuntu
+      versions:
+        - "xenial"
+        - "bionic"
+
+  galaxy_tags:
+    - dns
+    - networking
+
+dependencies: []
