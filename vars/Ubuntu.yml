@@ -1,6 +1,8 @@
 ---
-authns_packages: [ "bind9" ]
+authns_server_packages: [ "bind9" ]
 authns_service: "bind9"
+
+authns_utility_packages: [ "dnsutils" ]
 
 authns_bind_etc_path: "/etc/bind"
 authns_bind_db_path: "/var/lib/bind"

@@ -1,0 +1,6 @@
+---
+- name: Bind utilities present
+  loop: "{{ authns_utility_packages|list }}"
+  package:
+    name: "{{ item }}"
+    state: present

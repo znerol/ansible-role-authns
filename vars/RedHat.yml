@@ -1,9 +1,11 @@
 ---
-authns_packages: [ "bind" ]
+authns_server_packages: [ "bind" ]
 authns_service: "named"
 
-authns_bind_etc_path: "/etc/named"
+authns_utility_packages: [ "bind-utils" ]
 
+authns_bind_etc_path: "/etc/named"
+authns_bind_db_path: "/var/named"
 authns_bind_run_path: "/var/named"
 
 authns_bind_main_file: "/etc/named.conf"
