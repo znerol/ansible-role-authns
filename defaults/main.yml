@@ -1,11 +1,11 @@
 authns_update_key_name: "{{ inventory_hostname }}"
 
 authns_zone_name: "{{ inventory_hostname.split('.')[1:]|join('.') }}"
-authns_zone_allow_update: "none;"
-# authns_zone_allow_update: "{{ authns_acl_localnet_and_update_key }}"
+authns_zone_allow_update: []
+# authns_zone_allow_update: "{{ authns_acl_require_localnets_and_update_key|list }}"
 authns_zone_db_ns: "{{ inventory_hostname }}"
 authns_zone_db_hostmaster: "hostmaster.{{ authns_zone_name }}"
-authns_zone_db_serial: "{{ authns_zone_serial }}"
+authns_zone_db_serial: 1
 authns_zone_db_ttl: 21600
 authns_zone_db_refresh: 1800
 authns_zone_db_retry: 900

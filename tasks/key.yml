@@ -6,7 +6,7 @@
     dest: "{{ authns_update_key_file }}"
     owner: "{{ authns_update_key_owner }}"
     group: "{{ authns_update_key_group }}"
-    mode: 0640
+    mode: "{{ authns_update_key_mode }}"
 
 - name: Update key file included
   lineinfile:

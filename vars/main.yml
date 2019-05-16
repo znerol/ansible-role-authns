@@ -1,3 +1,4 @@
+---
 authns_packages:
   - bind9
 
@@ -10,9 +11,14 @@ authns_bind_options_file: "{{ authns_bind_etc_path }}/named.conf.options"
 authns_update_key_file: "{{ authns_bind_etc_path }}/key.{{ authns_update_key_name }}"
 authns_update_key_owner: root
 authns_update_key_group: bind
+authns_update_key_mode: 0640
 
 authns_zone_config_file: "{{ authns_bind_etc_path }}/zones.{{ authns_zone_name }}"
 authns_zone_db_file: "{{ authns_bind_db_path }}/db.{{ authns_zone_name }}"
 authns_zone_rr_file: "{{ authns_zone_db_file }}.rr"
 
-authns_acl_localnet_and_update_key: "!{ !localnets; any; }; key {{ authns_update_key_name }};"
+authns_acl_accept_update_key: "key {{ authns_update_key_name }}"
+authns_acl_reject_non_localnets: "!{ !localnets; any; }"
+authns_acl_require_localnets_and_update_key:
+  - "{{ authns_acl_reject_non_localnets }}"
+  - "{{ authns_acl_accept_update_key }}"

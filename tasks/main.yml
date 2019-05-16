@@ -1,7 +1,7 @@
 ---
 - name: Bind nameserver installed
   loop: "{{ authns_packages }}"
-  apt:
+  package:
     name: "{{ item }}"
     state: present
 
