@@ -24,6 +24,9 @@ Example Playbook
 ----------------
 
     - hosts: all
+      vars:
+        authns_zone_rr_content: |
+          _test 1D IN TXT "test rr"
       tasks:
         - import_role:
             name: znerol.authns

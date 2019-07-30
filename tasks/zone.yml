@@ -4,31 +4,55 @@
     - Bind reloaded
   template:
     src: zone.j2
+
     dest: "{{ authns_zone_config_file }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ authns_zone_config_owner }}"
+    group: "{{ authns_zone_config_group }}"
+    mode: "{{ authns_zone_config_mode }}"
+
+    selevel: "{{ authns_zone_config_selevel | default(omit) }}"
+    serole: "{{ authns_zone_config_serole | default(omit) }}"
+    setype: "{{ authns_zone_config_setype | default(omit) }}"
+    seuser: "{{ authns_zone_config_seuser | default(omit) }}"
 
 - name: Zone database file present
   notify:
     - Bind reloaded
   template:
     src: db.j2
+
     dest: "{{ authns_zone_db_file }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ authns_zone_db_owner }}"
+    group: "{{ authns_zone_db_group }}"
+    mode: "{{ authns_zone_db_mode }}"
+
+    selevel: "{{ authns_zone_db_selevel | default(omit) }}"
+    serole: "{{ authns_zone_db_serole | default(omit) }}"
+    setype: "{{ authns_zone_db_setype | default(omit) }}"
+    seuser: "{{ authns_zone_db_seuser | default(omit) }}"
 
 - name: Zone resource records file present
   notify:
     - Bind reloaded
   copy:
-    content: ""
-    force: no
     dest: "{{ authns_zone_rr_file }}"
-    owner: root
-    group: root
-    mode: 0644
+    owner: "{{ authns_zone_rr_owner }}"
+    group: "{{ authns_zone_rr_group }}"
+    mode: "{{ authns_zone_rr_mode }}"
+
+    checksum: "{{ authns_zone_rr_checksum | default(omit) }}"
+    content: "{{ authns_zone_rr_content | default(omit) }}"
+    decrypt: "{{ authns_zone_rr_decrypt | default(omit) }}"
+    follow: "{{ authns_zone_rr_follow | default(omit) }}"
+    force: "{{ authns_zone_rr_force }} | default(omit) }}"
+    local_follow: "{{ authns_zone_rr_local_follow | default(omit) }}"
+    remote_src: "{{ authns_zone_rr_remote_src | default(omit) }}"
+    src: "{{ authns_zone_rr_src | default(omit) }}"
+
+    selevel: "{{ authns_zone_rr_selevel | default(omit) }}"
+    serole: "{{ authns_zone_rr_serole | default(omit) }}"
+    setype: "{{ authns_zone_rr_setype | default(omit) }}"
+    seuser: "{{ authns_zone_rr_seuser | default(omit) }}"
 
 - name: Zone configuration file included
   notify:
