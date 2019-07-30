@@ -13,7 +13,7 @@
     content: "{{ authns_update_key_content | default(omit) }}"
     decrypt: "{{ authns_update_key_decrypt | default(omit) }}"
     follow: "{{ authns_update_key_follow | default(omit) }}"
-    force: "{{ authns_update_key_force }} | default(omit) }}"
+    force: "{{ authns_update_key_force | default(omit) }}"
     local_follow: "{{ authns_update_key_local_follow | default(omit) }}"
     remote_src: "{{ authns_update_key_remote_src | default(omit) }}"
     src: "{{ authns_update_key_src | default(omit) }}"

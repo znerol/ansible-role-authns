@@ -44,7 +44,7 @@
     content: "{{ authns_zone_rr_content | default(omit) }}"
     decrypt: "{{ authns_zone_rr_decrypt | default(omit) }}"
     follow: "{{ authns_zone_rr_follow | default(omit) }}"
-    force: "{{ authns_zone_rr_force }} | default(omit) }}"
+    force: "{{ authns_zone_rr_force | default(omit) }}"
     local_follow: "{{ authns_zone_rr_local_follow | default(omit) }}"
     remote_src: "{{ authns_zone_rr_remote_src | default(omit) }}"
     src: "{{ authns_zone_rr_src | default(omit) }}"
