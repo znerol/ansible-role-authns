@@ -1,6 +1,4 @@
 ---
-authns_update_key_file: "{{ authns_bind_etc_path }}/key.{{ authns_update_key_name }}"
-authns_update_key_mode: 0640
 
 authns_bind_options_file: "{{ authns_bind_etc_path }}/named.conf.options"
 authns_bind_config_file: "{{ authns_bind_etc_path }}/named.conf.local"

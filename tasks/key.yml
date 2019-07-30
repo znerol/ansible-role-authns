@@ -1,14 +1,40 @@
 ---
-- name: Update key file
+- name: Update key file present
+  when: authns_update_key_state | default('present') == 'present'
+  notify:
+    - Bind reloaded
   copy:
-    content: ""
-    force: no
     dest: "{{ authns_update_key_file }}"
     owner: "{{ authns_update_key_owner }}"
     group: "{{ authns_update_key_group }}"
     mode: "{{ authns_update_key_mode }}"
 
+    checksum: "{{ authns_update_key_checksum | default(omit)}}"
+    content: "{{ authns_update_key_content | default(omit)}}"
+    decrypt: "{{ authns_update_key_decrypt | default(omit)}}"
+    follow: "{{ authns_update_key_follow | default(omit)}}"
+    force: "{{ authns_update_key_force }} | default(omit) }}"
+    local_follow: "{{ authns_update_key_local_follow | default(omit)}}"
+    remote_src: "{{ authns_update_key_remote_src | default(omit)}}"
+    src: "{{ authns_update_key_src | default(omit)}}"
+
+    selevel: "{{ authns_update_key_selevel | default(omit) }}"
+    serole: "{{ authns_update_key_serole | default(omit) }}"
+    setype: "{{ authns_update_key_setype | default(omit) }}"
+    seuser: "{{ authns_update_key_seuser | default(omit) }}"
+
+- name: Update key file absent
+  when: authns_update_key_state | default('present') == 'absent'
+  notify:
+    - Bind reloaded
+  file:
+    dest: "{{ authns_update_key_file }}"
+    state: absent
+
 - name: Update key file included
+  notify:
+    - Bind reloaded
   lineinfile:
     path: "{{ authns_bind_config_file }}"
+    state: "{{ authns_update_key_state | default(omit) }}"
     line: 'include "{{ authns_update_key_file }}";'
