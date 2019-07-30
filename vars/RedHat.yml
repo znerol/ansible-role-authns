@@ -8,7 +8,7 @@ authns_bind_etc_path: "/etc/named"
 authns_bind_db_path: "/var/named"
 authns_bind_run_path: "/var/named"
 
-authns_bind_main_file: "/etc/named.conf"
+authns_main_config_file: "/etc/named.conf"
 
 authns_os_bind_user: named
 authns_os_bind_group: named

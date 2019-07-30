@@ -1,8 +1,24 @@
 ---
+# tasks/main.yml
+
+authns_main_config_owner: root
+authns_main_config_group: root
+authns_main_config_mode: 0644
+
+authns_local_config_file: "{{ authns_bind_etc_path }}/named.conf.local"
+authns_local_config_owner: root
+authns_local_config_group: root
+authns_local_config_mode: 0644
+
+authns_options_config_file: "{{ authns_bind_etc_path }}/named.conf.options"
+authns_options_config_owner: root
+authns_options_config_group: root
+authns_options_config_mode: 0644
+
+# tasks/key.yml
+authns_update_key_file: "{{ authns_bind_etc_path }}/key.{{ authns_update_key_name }}"
 authns_update_key_owner: root
 authns_update_key_group: "{{ authns_os_bind_group }}"
-
-authns_update_key_file: "{{ authns_bind_etc_path }}/key.{{ authns_update_key_name }}"
 authns_update_key_mode: 0640
 authns_update_key_name: "{{ inventory_hostname }}"
 

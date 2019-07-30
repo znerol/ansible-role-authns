@@ -1,8 +1,5 @@
 ---
 
-authns_bind_options_file: "{{ authns_bind_etc_path }}/named.conf.options"
-authns_bind_config_file: "{{ authns_bind_etc_path }}/named.conf.local"
-
 authns_zone_config_file: "{{ authns_bind_etc_path }}/zones.{{ authns_zone_name }}"
 authns_zone_db_file: "{{ authns_bind_db_path }}/db.{{ authns_zone_name }}"
 authns_zone_rr_file: "{{ authns_zone_db_file }}.rr"

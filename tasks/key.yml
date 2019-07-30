@@ -35,6 +35,6 @@
   notify:
     - Bind reloaded
   lineinfile:
-    path: "{{ authns_bind_config_file }}"
+    path: "{{ authns_local_config_file }}"
     state: "{{ authns_update_key_state | default(omit) }}"
     line: 'include "{{ authns_update_key_file }}";'

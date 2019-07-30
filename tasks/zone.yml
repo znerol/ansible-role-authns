@@ -34,5 +34,5 @@
   notify:
     - Bind reloaded
   lineinfile:
-    path: "{{ authns_bind_config_file }}"
+    path: "{{ authns_local_config_file }}"
     line: 'include "{{ authns_zone_config_file }}";'

@@ -8,7 +8,7 @@ authns_bind_etc_path: "/etc/bind"
 authns_bind_db_path: "/var/lib/bind"
 authns_bind_run_path: "/var/cache/bind"
 
-authns_bind_main_file: "{{ authns_bind_etc_path }}/named.conf"
+authns_main_config_file: "{{ authns_bind_etc_path }}/named.conf"
 
 authns_os_bind_user: bind
 authns_os_bind_group: bind
