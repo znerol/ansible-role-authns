@@ -1,4 +1,7 @@
 ---
+authns_update_key_owner: root
+authns_update_key_group: "{{ authns_os_bind_group }}"
+
 authns_update_key_file: "{{ authns_bind_etc_path }}/key.{{ authns_update_key_name }}"
 authns_update_key_mode: 0640
 authns_update_key_name: "{{ inventory_hostname }}"

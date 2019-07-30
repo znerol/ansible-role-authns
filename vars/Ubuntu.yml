@@ -10,5 +10,5 @@ authns_bind_run_path: "/var/cache/bind"
 
 authns_bind_main_file: "{{ authns_bind_etc_path }}/named.conf"
 
-authns_update_key_owner: root
-authns_update_key_group: bind
+authns_os_bind_user: bind
+authns_os_bind_group: bind

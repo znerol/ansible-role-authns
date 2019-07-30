@@ -10,5 +10,5 @@ authns_bind_run_path: "/var/named"
 
 authns_bind_main_file: "/etc/named.conf"
 
-authns_update_key_owner: root
-authns_update_key_group: named
+authns_os_bind_user: named
+authns_os_bind_group: named
