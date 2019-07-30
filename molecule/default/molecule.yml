@@ -61,6 +61,10 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  inventory:
+    host_vars:
+      ns3.fedora-authns.example.com:
+        ansible_python_interpreter: /usr/bin/python3
 
 verifier:
   name: testinfra
