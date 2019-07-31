@@ -1,10 +1,10 @@
 ---
 - name: Variables validated
   when: >-
-    (authns_update_key_file is defined and authns_update_key_content is defined) or
-    (authns_update_key_file is not defined and authns_update_key_content is not defined)
+    (authns_update_key_src is defined and authns_update_key_content is defined) or
+    (authns_update_key_src is not defined and authns_update_key_content is not defined)
   fail:
-    msg: Either one of authns_update_key_file or authns_update_key_content must be set.
+    msg: Either one of authns_update_key_src or authns_update_key_content must be set.
 
 - name: Update key file present
   when: authns_update_key_state | default('present') == 'present'
