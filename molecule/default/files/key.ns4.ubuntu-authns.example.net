@@ -1,0 +1,4 @@
+key "ns4.ubuntu-authns.example.net" {
+	algorithm hmac-sha256;
+	secret "n4jFda1G54OgCPOuiue/AaAPJGPxKHtIDJpwD2jBWPI=";
+};

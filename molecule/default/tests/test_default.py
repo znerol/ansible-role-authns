@@ -27,3 +27,17 @@ def test_TXT(host):
 
 def test_refuse_recurse(host):
     host.run_expect([1], "/usr/bin/nslookup -type=SOA com. localhost")
+
+
+def test_ddns(host):
+    host_vars = host.ansible.get_variables()
+    hostname = host_vars["inventory_hostname"]
+
+    zone = '.'.join(hostname.split('.')[1:])
+
+    host.run_expect([0],
+                    "/usr/bin/nsupdate -k ~/files/key.%s ~/files/nsupdate.%s",
+                    hostname, hostname)
+
+    host.run_expect([0], "/usr/bin/nslookup -type=TXT _test-2.%s. localhost",
+                    zone)

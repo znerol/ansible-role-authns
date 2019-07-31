@@ -1,17 +1,45 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    authns_zone_rr_content: |
-      _test 1D IN TXT "test rr"
   tasks:
+    - name: Parameters set for test with keys in file
+      when: molecule_authns_key_source == "file"
+      set_fact:
+        authns_update_key_src: "files/key.{{ inventory_hostname }}"
+
+    - name: Parameters set for test with keys in var
+      when: molecule_authns_key_source == "var"
+      set_fact:
+        authns_update_key_content: "{{ lookup('file', 'files/key.' + inventory_hostname) }}\n"
+
+    - name: Parameters set for test with zone rr in file
+      when: molecule_authns_zone_source == "file"
+      set_fact:
+        authns_zone_rr_src: "files/db.{{ inventory_hostname }}.rr"
+
+    - name: Parameters set for test with zone rr in var
+      when: molecule_authns_zone_source == "var"
+      set_fact:
+        authns_zone_rr_content: "{{ lookup('file', 'files/db.' + inventory_hostname + '.rr') }}\n"
+
     - import_role:
         name: ansible-role-authns
 
     - import_role:
+        name: ansible-role-authns
+        tasks_from: key
+
+    - vars:
+        authns_zone_allow_update: "{{ authns_acl_require_localnets_and_update_key|list }}"
+      import_role:
         name: ansible-role-authns
         tasks_from: zone
 
     - import_role:
         name: ansible-role-authns
         tasks_from: utilities
+
+    - name: All fixtures present in all machines
+      copy:
+        src: files/
+        dest: ~/files/

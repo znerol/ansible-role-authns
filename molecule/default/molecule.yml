@@ -63,8 +63,19 @@ provisioner:
     name: ansible-lint
   inventory:
     host_vars:
+      ns1.centos-authns.example.com:
+        molecule_authns_key_source: file
+        molecule_authns_zone_source: file
+      ns2.debian-authns.example.net:
+        molecule_authns_key_source: file
+        molecule_authns_zone_source: var
       ns3.fedora-authns.example.com:
         ansible_python_interpreter: /usr/bin/python3
+        molecule_authns_key_source: var
+        molecule_authns_zone_source: file
+      ns4.ubuntu-authns.example.net:
+        molecule_authns_key_source: var
+        molecule_authns_zone_source: var
 
 verifier:
   name: testinfra

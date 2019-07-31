@@ -1,0 +1,4 @@
+key "ns2.debian-authns.example.net" {
+	algorithm hmac-sha256;
+	secret "yTZpvlIzJINFaZljAG4ulya/d2e6ccJXWf4hauU8iRo=";
+};
