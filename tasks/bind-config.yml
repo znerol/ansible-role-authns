@@ -1,0 +1,36 @@
+---
+- name: OS-specific variables included
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Bind zones config file present
+  notify:
+    - Bind reloaded
+  copy:
+    content: ""
+    force: no
+
+    dest: "{{ authns_local_config_file }}"
+    owner: "{{ authns_local_config_owner }}"
+    group: "{{ authns_local_config_group }}"
+    mode: "{{ authns_local_config_mode }}"
+
+    selevel: "{{ authns_local_config_selevel | default(omit) }}"
+    serole: "{{ authns_local_config_serole | default(omit) }}"
+    setype: "{{ authns_local_config_setype | default(omit) }}"
+    seuser: "{{ authns_local_config_seuser | default(omit) }}"
+
+- name: Bind configured as authoritative-only nameserver
+  notify:
+    - Bind reloaded
+  template:
+    src: named.conf.options.j2
+
+    dest: "{{ authns_options_config_file }}"
+    owner: "{{ authns_options_config_owner }}"
+    group: "{{ authns_options_config_group }}"
+    mode: "{{ authns_options_config_mode }}"
+
+    selevel: "{{ authns_options_config_selevel | default(omit) }}"
+    serole: "{{ authns_options_config_serole | default(omit) }}"
+    setype: "{{ authns_options_config_setype | default(omit) }}"
+    seuser: "{{ authns_options_config_seuser | default(omit) }}"

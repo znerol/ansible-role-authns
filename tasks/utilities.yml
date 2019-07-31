@@ -1,4 +1,7 @@
 ---
+- name: OS-specific variables included
+  include_vars: "{{ ansible_os_family }}.yml"
+
 - name: Bind utilities present
   loop: "{{ authns_utility_packages|list }}"
   package:
