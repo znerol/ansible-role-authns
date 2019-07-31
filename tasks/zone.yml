@@ -1,4 +1,11 @@
 ---
+- name: Variables validated
+  when: >-
+    (authns_zone_rr_file is defined and authns_zone_rr_content is defined) or
+    (authns_zone_rr_file is not defined and authns_zone_rr_content is not defined)
+  fail:
+    msg: Either one of authns_zone_rr_file or authns_zone_rr_content must be set.
+
 - name: Zone configuration file present
   notify:
     - Bind reloaded
