@@ -7,19 +7,3 @@
   package:
     name: "{{ item }}"
     state: present
-
-- name: Bind main config file present
-  notify:
-    - Bind reloaded
-  template:
-    src: named.conf.j2
-
-    dest: "{{ authns_main_config_file }}"
-    owner: "{{ authns_main_config_owner }}"
-    group: "{{ authns_main_config_group }}"
-    mode: "{{ authns_main_config_mode }}"
-
-    selevel: "{{ authns_main_config_selevel | default(omit) }}"
-    serole: "{{ authns_main_config_serole | default(omit) }}"
-    setype: "{{ authns_main_config_setype | default(omit) }}"
-    seuser: "{{ authns_main_config_seuser | default(omit) }}"
