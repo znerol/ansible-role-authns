@@ -110,8 +110,7 @@ authns_zone_name: "{{ inventory_hostname.split('.')[1:]|join('.') }}"
 authns_zone_allow_update: []
 
 authns_zone_dnssec: false
-authns_zone_dnssec_key_name: "{{ authns_zone_name }}"
-authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_dnssec_key_name }}"
+authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_zone_name }}"
 authns_zone_dnssec_key_owner: root
 authns_zone_dnssec_key_group: "{{ authns_os_bind_group }}"
 authns_zone_dnssec_key_mode: 0750

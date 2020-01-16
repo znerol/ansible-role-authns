@@ -43,8 +43,7 @@ authns_zone_allow_update: []
 # authns_zone_allow_update: "{{ authns_acl_require_localnets_and_update_key|list }}"
 #
 authns_zone_dnssec: false
-authns_zone_dnssec_key_name: "{{ authns_zone_name }}"
-authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_dnssec_zsk_name }}"
+authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_zone_name }}"
 authns_zone_dnssec_key_owner: root
 authns_zone_dnssec_key_group: "{{ authns_os_bind_group }}"
 authns_zone_dnssec_key_mode: 0750

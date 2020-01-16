@@ -69,7 +69,7 @@
     - Bind reloaded
   file:
     state: directory
-    dest: "{{ authns_zone_dnssec_key_dir }}"
+    path: "{{ authns_zone_dnssec_key_dir }}"
     owner: "{{ authns_zone_dnssec_key_owner }}"
     group: "{{ authns_zone_dnssec_key_group }}"
     mode: "{{ authns_zone_dnssec_key_mode }}"
