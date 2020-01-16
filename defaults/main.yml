@@ -41,6 +41,14 @@ authns_zone_rr_mode: 0644
 authns_zone_name: "{{ inventory_hostname.split('.')[1:]|join('.') }}"
 authns_zone_allow_update: []
 # authns_zone_allow_update: "{{ authns_acl_require_localnets_and_update_key|list }}"
+#
+authns_zone_dnssec: false
+authns_zone_dnssec_key_name: "{{ authns_zone_name }}"
+authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_dnssec_zsk_name }}"
+authns_zone_dnssec_key_owner: root
+authns_zone_dnssec_key_group: "{{ authns_os_bind_group }}"
+authns_zone_dnssec_key_mode: 0750
+
 authns_zone_db_ns: "{{ inventory_hostname }}"
 authns_zone_db_hostmaster: "hostmaster.{{ authns_zone_name }}"
 authns_zone_db_serial: 1

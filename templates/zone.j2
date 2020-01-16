@@ -8,4 +8,10 @@ zone "{{ authns_zone_name }}" {
         allow-update { {{ authns_zone_allow_update|join("; ") }}; };
 {% endif %}
 
+{% if authns_zone_dnssec: %}
+        key-directory "{{ authns_zone_dnssec_key_dir }}";
+        inline-signing yes;
+        auto-dnssec maintain;
+{% endif %}
+
 };

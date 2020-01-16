@@ -64,6 +64,21 @@
     setype: "{{ authns_zone_rr_setype | default(omit) }}"
     seuser: "{{ authns_zone_rr_seuser | default(omit) }}"
 
+- name: Zone DNSSEC key directory present
+  notify:
+    - Bind reloaded
+  file:
+    state: directory
+    dest: "{{ authns_zone_dnssec_key_dir }}"
+    owner: "{{ authns_zone_dnssec_key_owner }}"
+    group: "{{ authns_zone_dnssec_key_group }}"
+    mode: "{{ authns_zone_dnssec_key_mode }}"
+
+    selevel: "{{ authns_zone_dnssec_key_selevel | default(omit) }}"
+    serole: "{{ authns_zone_dnssec_key_serole | default(omit) }}"
+    setype: "{{ authns_zone_dnssec_key_setype | default(omit) }}"
+    seuser: "{{ authns_zone_dnssec_key_seuser | default(omit) }}"
+
 - name: Zone configuration file included
   notify:
     - Bind reloaded

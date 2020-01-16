@@ -98,6 +98,9 @@ When setting up a new zone, the following variables are optional:
 * `authns_zone_db_ns_ip4` and `authns_zone_db_ns_ip6`: Used for `A` and `AAAA`
   records for the zones nameserver. Default to the ip of inventory hostname if
   its domain matches `authns_zone_name`.
+* If `authns_zone_dnssec` is set to `true`, a directory is created with the
+  correct access mode and DNSSEC configuration is added to the zone config.
+  Note that this does *not* generate any DNSSEC keys.
 
 The remaining variables in this section should be left to their defaults in
 most cases.
@@ -105,6 +108,17 @@ most cases.
 ```
 authns_zone_name: "{{ inventory_hostname.split('.')[1:]|join('.') }}"
 authns_zone_allow_update: []
+
+authns_zone_dnssec: false
+authns_zone_dnssec_key_name: "{{ authns_zone_name }}"
+authns_zone_dnssec_key_dir: "{{ authns_bind_etc_path }}/dnssec.{{ authns_dnssec_key_name }}"
+authns_zone_dnssec_key_owner: root
+authns_zone_dnssec_key_group: "{{ authns_os_bind_group }}"
+authns_zone_dnssec_key_mode: 0750
+authns_zone_dnssec_key_selevel: # omitted by default
+authns_zone_dnssec_key_serole: # omitted by default
+authns_zone_dnssec_key_setype: # omitted by default
+authns_zone_dnssec_key_seuser: # omitted by default
 
 authns_zone_config_file: "{{ authns_bind_etc_path }}/zones.{{ authns_zone_name }}"
 authns_zone_config_owner: root
